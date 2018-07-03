@@ -1,0 +1,6 @@
+﻿  Source.cpp
+c:\users\phuong ly ly\source\repos\task1\source.cpp(13): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\phuong ly ly\source\repos\task1\source.cpp(14): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\phuong ly ly\source\repos\task1\source.cpp(15): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\phuong ly ly\source\repos\task1\source.cpp(28): warning C4244: '=': conversion from 'float' to 'uchar', possible loss of data
+opencv_world341d.lib(opencv_world341d.dll) : fatal error LNK1112: module machine type 'x64' conflicts with target machine type 'x86'

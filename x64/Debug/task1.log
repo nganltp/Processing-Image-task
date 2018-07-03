@@ -1,0 +1,6 @@
+﻿  Source.cpp
+e:\intern\task1\source.cpp(13): warning C4305: 'initializing': truncation from 'double' to 'float'
+e:\intern\task1\source.cpp(14): warning C4305: 'initializing': truncation from 'double' to 'float'
+e:\intern\task1\source.cpp(15): warning C4305: 'initializing': truncation from 'double' to 'float'
+e:\intern\task1\source.cpp(28): warning C4244: '=': conversion from 'float' to 'uchar', possible loss of data
+  task1.vcxproj -> E:\intern\task1\x64\Debug\task1.exe
