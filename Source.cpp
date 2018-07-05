@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 		}
 	}
 
-	bool iSuccess = imwrite("E:/intern/Processing - Image - task/Output/output2.png", newImg);
+	bool iSuccess = imwrite("E:/intern/Processing-Image-task/Output/output2.png", newImg);
 	if (!iSuccess)
 		cout << " can't save Image!!!";
 	else cout << " Success!";
