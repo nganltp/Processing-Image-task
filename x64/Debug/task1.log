@@ -1,6 +1,6 @@
 ﻿  Source.cpp
-e:\intern\task1\source.cpp(13): warning C4305: 'initializing': truncation from 'double' to 'float'
-e:\intern\task1\source.cpp(14): warning C4305: 'initializing': truncation from 'double' to 'float'
-e:\intern\task1\source.cpp(15): warning C4305: 'initializing': truncation from 'double' to 'float'
-e:\intern\task1\source.cpp(28): warning C4244: '=': conversion from 'float' to 'uchar', possible loss of data
-  task1.vcxproj -> E:\intern\task1\x64\Debug\task1.exe
+e:\intern\processing-image-task\source.cpp(19): warning C4305: 'initializing': truncation from 'double' to 'float'
+e:\intern\processing-image-task\source.cpp(20): warning C4305: 'initializing': truncation from 'double' to 'float'
+e:\intern\processing-image-task\source.cpp(21): warning C4305: 'initializing': truncation from 'double' to 'float'
+e:\intern\processing-image-task\source.cpp(34): warning C4244: '=': conversion from 'float' to 'uchar', possible loss of data
+  task1.vcxproj -> E:\intern\Processing-Image-task\x64\Debug\task1.exe

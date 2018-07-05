@@ -10,11 +10,18 @@ using namespace std;
 int main(int argc, char **argv)
 {
 	/*Init*/
+	/*string nameImg = argv[1];
+
+	float rateB = avof(argv[2]),
+		rateG = avof(argv[3]),
+		rateR = avof(argv[4]);
+		Mat foo = imread(nameImg);*/
+
 	float rateB = 0.3,
 		rateG = 0.3,
 		rateR = 0.3;
+	Mat foo = imread("7.png");
 
-	Mat foo = imread("6.png");
 	Mat newImg(foo.rows, foo.cols, CV_8UC1, Scalar(0));
 
 	/*Get value 3 chanel of "foo" image and update value "newImg" image */
@@ -24,10 +31,16 @@ int main(int argc, char **argv)
 			int valB = intensity.val[0]; //B
 			int valG = intensity.val[1]; //G
 			int valR = intensity.val[2]; //R
-										 //cout << "B " << valB << "   " << "G: " <<  valG << "   "<< "R: " << valR<<endl;
+			//cout << "B " << valB << "   " << "G: " <<  valG << "   "<< "R: " << valR<<endl;
 			newImg.at<uchar>(j, i) = valB * rateB + valG * rateG + valR * rateR;
 		}
 	}
+
+	bool iSuccess = imwrite("E:/intern/Processing - Image - task/Output/output2.png", newImg);
+	if (!iSuccess)
+		cout << " can't save Image!!!";
+	else cout << " Success!";
+
 	imshow("origin", foo);
 	imshow("Gray", newImg);
 	waitKey(0);
