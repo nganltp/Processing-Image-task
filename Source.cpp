@@ -35,10 +35,15 @@ int main(int argc, char **argv)
 	cin >> pathOut;
 	cout << "type: ";
 	cin >> type;*/
-	
+	/*
 	pathIn = "Input";
 	pathOut = "Output";
-	type = 1;
+	type = 0;
+	*/
+	/*cmd*/
+	pathIn = argv[1];
+	pathOut = argv[2];
+	type = atoi(argv[3]);
 
 	path = "E:/intern/Processing-Image-task/x64/Debug/";
 	pathIn = path + pathIn;
@@ -61,14 +66,14 @@ int main(int argc, char **argv)
 
 			string strNumImg = Int2Str(numImg);
 			string nameOp = pathOut + "/output" + strNumImg + ".png";
-			cout << "nameOp: " << nameOp<<endl;
+			//cout << "nameOp: " << nameOp<<endl;
 			bool iSuccess = imwrite(nameOp, img);
-			if (!iSuccess)
+			/*if (!iSuccess)
 				cout << " can't save Image!!!"<<endl;
 			else cout << " Success!"<<endl;
 			cout << "numImg: "<<numImg << endl;
 
-			imshow("imgGray", img);
+			imshow("imgGray", img);*/
 		}
 		waitKey(0);
 		destroyAllWindows();
@@ -87,17 +92,19 @@ int main(int argc, char **argv)
 			Mat img = imread(pathI);
 			numImg++;
 			string strNumImg = Int2Str(numImg);
-			cout << "strNumImg: " << strNumImg<<endl;
+			//cout << "strNumImg: " << strNumImg<<endl;
 			strNumImg = pathOut + "/" + strNumImg;
-			cout << "pathOut+ strNumImg : " << strNumImg<<endl;
+			//cout << "pathOut+ strNumImg : " << strNumImg<<endl;
 			const char *cstr = strNumImg.c_str();
 			int itest = _mkdir(cstr);
-			cout << itest;
+			//cout << itest;
 			Mat newImg(img.rows, img.cols, CV_8UC1, Scalar(0));
-			float oo = 0.1;
+			//float oo = 0.1;
+			/*cmd*/
+			float oo;
 			//cout << "nhap do lon buoc nhay: ";
 			//cin >> oo;
-			//oo = atof(argv[2]);
+			oo = atof(argv[4]);
 			int numRate = 0;
 			for (rateB = 0; rateB <= 1; rateB += oo)
 				for (rateG = 0; rateG <= 1 - rateB; rateG += oo)
@@ -119,18 +126,18 @@ int main(int argc, char **argv)
 					strG = Int2Str(rateG*100);
 					strR = Int2Str(rateR*100);
 				
-					cout << "numImg: " << numImg << endl;
-					imshow("imgGray", img);
+					//cout << "numImg: " << numImg << endl;
+					//imshow("imgGray", img);
 					//strPath = "E:/intern/Processing-Image-task/x64/Debug/Output/" +strNumImg+ strPath + "_B" + strB + "_G" + strG + "_R" + strR + ".png";
-					string nameOp = strNumImg + "/output" + strNumRate + "__B" + strB + "_G" + strG + "_R" + strR + ".png";
+					string nameOp = strNumImg + "/output" + strNumRate+/* "__B" + strB + "_G" + strG + "_R" + strR + */".png";
 					//cout << "B: " << strB << ", G: " << strG << ", R: " << strR << endl;
 					//cout << nameOp << endl;
 					bool iSuccess = imwrite(nameOp, newImg);
 					/*if (!iSuccess)
 						cout << " can't save Image!!!";
 					else cout << " Success!";*/
-					cout << "numImg: " << numImg << endl;
-					imshow("imgGray", img);
+					//cout << "numImg: " << numImg << endl;
+					//imshow("imgGray", img);
 				}
 		}
 		waitKey(0);
@@ -138,7 +145,54 @@ int main(int argc, char **argv)
 	}
 	if (type == 2)
 	{
+		/*
+		cout << "rateB: ";
+		cin >> rateB;
+		cout << "rateG: ";
+		cin >> rateG;
+		cout << "rateR: ";
+		cin >> rateR;*/
+		/*cmd*/
+		rateB = atof(argv[4]);
+		rateG = atof(argv[5]);
+		rateR = atof(argv[6]);
+		
+		for (auto & p : fs::directory_iterator(pathIn)) {
+			ostringstream oss;
+			oss << p;
+			string pathI = oss.str();
+			//cout << "path: " << pathI;
+			//cout << p<< endl;
+			//cout << typeid(pathI).name() << endl;
+			Mat img = imread(pathI);
+			numImg++;
 
+			/*convert to Gray*/
+			Mat newImg(img.rows, img.cols, CV_8UC1, Scalar(0));
+			
+			for (int i = 0; i < img.cols; i++)
+				for (int j = 0; j < img.rows; j++) {
+					Vec3b intensity = img.at<Vec3b>(j, i);
+					int valB = intensity.val[0]; //B
+					int valG = intensity.val[1]; //G
+					int valR = intensity.val[2]; //R
+	//cout << "B " << valB << "   " << "G: " <<  valG << "   "<< "R: " << valR<<endl;
+					newImg.at<uchar>(j, i) = valB * rateB + valG * rateG + valR * rateR;
+				}
+
+			string strNumImg = Int2Str(numImg);
+			string nameOp = pathOut + "/output" + strNumImg + ".png";
+			//cout << "nameOp: " << nameOp << endl;
+			bool iSuccess = imwrite(nameOp, newImg);
+			/*if (!iSuccess)
+				cout << " can't save Image!!!" << endl;
+			else cout << " Success!" << endl;
+			cout << "numImg: " << numImg << endl;
+
+			imshow("imgGray", newImg);*/
+		}
+		waitKey(0);
+		destroyAllWindows();
 	}
 	//system("pause");
 	/*Read from Input folder*/
