@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 	pathOut = argv[2];
 	type = atoi(argv[3]);
 
-	path = "E:/intern/Processing-Image-task/x64/Debug/";
+	path = "/Processing-Image-task/x64/Debug/";
 	pathIn = path + pathIn;
 	pathOut = path + pathOut;
 
